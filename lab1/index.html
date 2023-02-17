@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculate</title>
+  </head>
+  <body>
+    <label for="input1">Value 1:</label>
+    <input type="number" id="input1"><br>
+
+    <label for="input2">Value 2:</label>
+    <input type="number" id="input2"><br>
+
+    <label for="input3">Value 3:</label>
+    <input type="number" id="input3"><br>
+
+    <label for="input4">Value 4:</label>
+    <input type="number" id="input4"><br>
+
+    <button onclick="recalculate()">Recalculate</button>
+
+    <br><br>
+    <p id="result"></p>
+
+    <script>
+      function recalculate() {
+        var input1 = parseFloat(document.getElementById("input1").value);
+        var input2 = parseFloat(document.getElementById("input2").value);
+        var input3 = parseFloat(document.getElementById("input3").value);
+        var input4 = parseFloat(document.getElementById("input4").value);
+
+        var sum = input1 + input2 + input3 + input4;
+        var avg = sum / 4;
+        var min = Math.min(input1, input2, input3, input4);
+        var max = Math.max(input1, input2, input3, input4);
+
+        document.getElementById("result").innerHTML = "Sum: " + sum + "<br>Average: " + avg + "<br>Min: " + min + "<br>Max: " + max;
+      }
+    </script>
+  </body>
+</html>
