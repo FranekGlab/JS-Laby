@@ -3,7 +3,6 @@ const slider_img = document.querySelector('.slider-img');
 const images = ['a.jpg', 'b.jpg', 'c.jpg'];
 let i = 0;
 
-
 function prev(){
 	if(i <= 0) i = images.length;	
 	i--;
