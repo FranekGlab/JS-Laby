@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NoteKeep</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>NoteKeep</h1>
+      <form>
+        <input type="text" id="note-title" placeholder="Note Title">
+        <textarea id="note-content" placeholder="Note Content"></textarea>
+        <button type="button" id="add-note">Add Note</button>
+        <button type="button" id="edit-note" disabled>Edit Note</button>
+        <button type="button" id="delete-note" disabled>Delete Note</button>
+      </form>
+      <hr>
+      <ul id="note-list"></ul>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
