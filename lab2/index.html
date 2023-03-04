@@ -3,19 +3,37 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Slider</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-
-		<div class="slider">
-			<div class="img-box">
-				<img src="images/a.jpg" class="slider-img">
+		<div class="container">
+			<div class="carousel">
+				<div class="slider">
+					<section><img src="images/a.jpg"></section>
+					<section><img src="images/b.jpg"></section>
+					<section><img src="images/c.jpg"></section>
+					<section><img src="images/g.webp"></section>
+				</div>
+				<div class="controls">
+					<span class="arrow left">
+						<i class="material-icons">
+							keyboard_arrow_left</i>
+						</span>
+					<span class="arrow right">
+						<i class="material-icons">
+						keyboard_arrow_right</i>
+					</span>
+					<ul>
+						<li class="selected"></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
 			</div>
-			<button class="btn" onclick="prev()">Prev</button>
-			<button class="btn" onclick="next()">Next</button>
 		</div>
 
 		<script src="main.js"></script>
-
 	</body>
+
 </html>

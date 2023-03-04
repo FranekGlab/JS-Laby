@@ -30,9 +30,9 @@ const saveNote = (note) => {
 const deleteNote = (index) => {
   notes.splice(index, 1);
   localStorage.setItem('notes', JSON.stringify(notes));
+  location.reload();
   renderNotes();
 };
-
 const pinNote = (note, noteElement) => {
   let clone = noteElement.cloneNode()
   if(note.isPinned == false)
@@ -49,6 +49,12 @@ const pinNote = (note, noteElement) => {
   }
   localStorage.setItem('notes', JSON.stringify(notes));  
 }
+
+
+const uniqueNotes = Array.from(new Set(notes.map(note => JSON.stringify(note))))
+  .map(note => JSON.parse(note));
+localStorage.setItem('notes', JSON.stringify(uniqueNotes));
+
 
 const editNote = (index) => {
     app.style.display = "none";
@@ -78,34 +84,34 @@ const edit = (index) => {
 }
 
 const renderNotes = () => {
-    app.innerHTML = '';
-    notes.forEach((note, index) => {
-        const noteEl = document.createElement('div');
-        noteEl.style.backgroundColor = note.color;
-        noteEl.innerHTML = `
-        <h2>${note.title}</h2>
-        <p>${note.content}</p>
-        <p>Date: ${note.date}</p>
-        <button onclick="deleteNote(${index})">Delete Note</button>
-        <button onclick="editNote(${index})">Edit Note</button>
-        `;
-        let pinBtn = document.createElement('button');
-        pinBtn.textContent = 'Pin';
-        pinBtn.addEventListener('click', (e) => {
-          pinNote(note, noteEl)
-        
-        });
-        noteEl.appendChild(pinBtn);
-        console.log(note.color);
-        if(note.isPinned)
-        {
-          pinnedContainer.appendChild(noteEl);
-        } else {        
-          app.appendChild(noteEl);
-        }
-        console.log(app)
+  app.innerHTML = '';
+  pinnedContainer.innerHTML = '';
+  notes.forEach((note, index) => {
+    const noteEl = document.createElement('div');
+    noteEl.style.backgroundColor = note.color;
+    noteEl.innerHTML = `
+      <h2>${note.title}</h2>
+      <p>${note.content}</p>
+      <p>Date: ${note.date}</p>
+      <button onclick="deleteNote(${index})">Delete Note</button>
+      <button onclick="editNote(${index})">Edit Note</button>
+    `;
+    let pinBtn = document.createElement('button');
+    pinBtn.textContent = 'Pin';
+    pinBtn.addEventListener('click', (e) => {
+      pinNote(note, noteEl)
     });
+    noteEl.appendChild(pinBtn);
+    console.log(note.color);
+    if (note.isPinned) {
+      pinnedContainer.appendChild(noteEl);
+    } else {
+      app.appendChild(noteEl);
+    }
+    console.log(app)
+  });
 };
+
 confirmBtn.addEventListener('click', (e) => {
     edit(currentIndex);
 })

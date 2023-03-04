@@ -19,6 +19,7 @@ const enterKeyCheck = (e) => {
     }
 }
 
+
 const getWeather = () => {
     const city = input.value || 'London'
     const URL = API_LINK + city + API_KEY + API_UNITS
@@ -60,5 +61,9 @@ const getWeather = () => {
     }).catch(() => warning.textContent = 'Wpisz poprawną nazwę miasta')
 }
 
+
 button.addEventListener('click', getWeather)
 input.addEventListener('keyup', enterKeyCheck)
+
+
+

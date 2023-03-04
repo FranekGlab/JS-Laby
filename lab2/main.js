@@ -1,21 +1,35 @@
+const slider = document.querySelector('.slider');
 
-const slider_img = document.querySelector('.slider-img');
-const images = ['a.jpg', 'b.jpg', 'c.jpg'];
-let i = 0;
+const leftArrow = document.querySelector('.left');
+const rightArrow = document.querySelector('.right');
+const indicatorParents = document.querySelector('.controls ul');
 
-function prev(){
-	if(i <= 0) i = images.length;	
-	i--;
-	return setImg();			 
-}
+var sectionIndex = 0;
 
-function next(){
-	if(i >= images.length-1) i = -1;
-	i++;
-	return setImg();			 
-}
+document.querySelectorAll('.controls li').forEach(function(indicator, ind) {
+	indicator.addEventListener('click', function() {
+		sectionIndex = ind;
+		document.querySelector('.controls .selected').classList.remove('selected');
+		indicator.classList.add('selected');
+		slider.style.transform = 'translate('  +  (ind)  *  -25  +  '%)';
+	});
+});
 
-function setImg(){
-	return slider_img.setAttribute('src', "images/"+images[i]);
-	
-}
+if (id = 4)
+
+leftArrow.addEventListener('click', function() {
+	sectionIndex = (sectionIndex > 0) ? sectionIndex - 1 : 0;
+	document.querySelector('.controls .selected').classList.remove('selected');
+	indicatorParents.children[sectionIndex].classList.add('selected');
+	slider.style.transform = 'translate('  +  (sectionIndex)  *  -25  +  '%)';
+});
+
+rightArrow.addEventListener('click', function() {
+	sectionIndex = (sectionIndex <= 3) ? sectionIndex + 1 : 3;
+	if(sectionIndex === 4 ) {
+	sectionIndex = 0 
+	}  
+	document.querySelector('.controls .selected').classList.remove('selected');
+	indicatorParents.children[sectionIndex].classList.add('selected');
+	slider.style.transform = 'translate('  +  (sectionIndex)  *  -25  +  '%)';
+});
